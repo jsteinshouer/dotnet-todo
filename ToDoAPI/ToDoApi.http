@@ -11,12 +11,12 @@ Authorization: Bearer {{loginRequest.response.body.accessToken}}
 Content-Type: application/json
 
 {
-  "Title": "Get groceries"
+  "Title": "Cook dinner"
 }
 
 ###
 
-PUT {{BaseURL}}/todo/2
+PUT {{BaseURL}}/todo/1
 Authorization: Bearer {{loginRequest.response.body.accessToken}}
 Content-Type: application/json
 
@@ -37,7 +37,7 @@ POST {{BaseURL}}/register/
 Content-Type: application/json
 
 {
-  "email": "me@example.com",
+  "email": "me2@example.com",
   "password": "P@ssword1"
 }
 
@@ -48,6 +48,6 @@ POST {{BaseURL}}/login/
 Content-Type: application/json
 
 {
-  "email": "me@example.com",
+  "email": "me2@example.com",
   "password": "P@ssword1"
 }

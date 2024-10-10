@@ -5,7 +5,7 @@ using ToDoApi.Models;
 
 namespace ToDoApi.Data;
 
-public class ApplicationDBContext : IdentityDbContext<IdentityUser>
+public class ApplicationDBContext : IdentityDbContext<User>
 {
     public ApplicationDBContext(DbContextOptions options)
         : base(options)
