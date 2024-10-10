@@ -1,0 +1,28 @@
+@BaseURL = http://0.0.0.0:5227/api
+
+GET {{BaseURL}}/todo
+Accept: application/json
+
+###
+
+POST {{BaseURL}}/todo
+Content-Type: application/json
+
+{
+  "Title": "Mow the lawn"
+}
+
+###
+
+PUT {{BaseURL}}/todo/2
+Content-Type: application/json
+
+{
+  "title": "Do the dishes",
+  "isDone": false
+}
+
+###
+
+DELETE {{BaseURL}}/todo/3
+Content-Type: application/json

@@ -1,0 +1,26 @@
+{
+    "name": "C# (.NET)",
+    "image": "mcr.microsoft.com/dotnet/sdk:8.0",
+    "features": {
+        "ghcr.io/warrenbuckley/codespace-features/sqlite:latest": {},
+        "ghcr.io/devcontainers/features/node:1": {},
+        "ghcr.io/devcontainers-contrib/features/angular-cli:2": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-dotnettools.vscode-dotnet-runtime",
+                "ms-dotnettools.csdevkit",
+                "ms-dotnetools.csharp",
+                "humao.rest-client",
+                "EditorConfig.EditorConfig",
+                "Angular.ng-template"
+            ]
+        }
+    },
+    "postCreateCommand": "",
+    "remoteEnv": {
+        "DOTNET_MULTILEVEL_LOOKUP": "0",
+        "TARGET": "net8.0"
+    }
+}
