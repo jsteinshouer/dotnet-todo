@@ -5,6 +5,11 @@ Authorization: Bearer {{loginRequest.response.body.accessToken}}
 Accept: application/json
 
 ###
+GET {{BaseURL}}/todo/1
+Authorization: Bearer {{loginRequest.response.body.accessToken}}
+Accept: application/json
+
+###
 
 POST {{BaseURL}}/todo
 Authorization: Bearer {{loginRequest.response.body.accessToken}}

@@ -20,6 +20,8 @@ app.MapGroup("/api").MapIdentityApi<User>();
 
 app.MapGet("/", () => "Hello World!");
 
+
+//GET a list of todos for the user
 app.MapGet( "/api/todo", (ApplicationDBContext db, ClaimsPrincipal user) =>
 {
     return db.Users
@@ -28,6 +30,20 @@ app.MapGet( "/api/todo", (ApplicationDBContext db, ClaimsPrincipal user) =>
             .SingleOrDefault(p => p.UserName == user.Identity.Name)
             .ToDos;
 }).RequireAuthorization();
+
+//Get a single Todo
+app.MapGet("/api/todo/{id}", Results<Ok<ToDo>, NotFound> (ApplicationDBContext db, ClaimsPrincipal user, int id) =>
+{
+
+    var todo = db.ToDos.FirstOrDefault(td => td.UserId == user.FindFirstValue(ClaimTypes.NameIdentifier) && td.Id == id);
+
+    if (todo is null)
+        return TypedResults.NotFound();
+
+    return TypedResults.Ok(todo);
+}).RequireAuthorization();
+
+//Create a new todo for the user
 app.MapPost( "/api/todo", (ClaimsPrincipal user, ApplicationDBContext db, ToDo todo) => 
 {
     
@@ -36,6 +52,8 @@ app.MapPost( "/api/todo", (ClaimsPrincipal user, ApplicationDBContext db, ToDo t
     db.SaveChanges();
     return Results.Created();
 }).RequireAuthorization();
+
+//Update an existing Todo
 app.MapPut( "/api/todo/{id}", (ApplicationDBContext db, ClaimsPrincipal user, ToDo updateTodo, int id) => {
     var todo = db.ToDos.SingleOrDefault(p => p.UserId == user.FindFirstValue(ClaimTypes.NameIdentifier) && p.Id == id );
     if (todo is null)
@@ -46,6 +64,8 @@ app.MapPut( "/api/todo/{id}", (ApplicationDBContext db, ClaimsPrincipal user, To
 
     return Results.NoContent();
 }).RequireAuthorization();
+
+//Delete a todo
 app.MapDelete( "/api/todo/{id}", (ApplicationDBContext db, int id) => 
 {
     var todo = db.ToDos.SingleOrDefault(p => p.Id == id);
