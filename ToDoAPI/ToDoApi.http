@@ -1,20 +1,28 @@
 @BaseURL = http://0.0.0.0:5227/api
 
 GET {{BaseURL}}/todo
+Authorization: Bearer {{loginRequest.response.body.accessToken}}
+Accept: application/json
+
+###
+GET {{BaseURL}}/todo/1
+Authorization: Bearer {{loginRequest.response.body.accessToken}}
 Accept: application/json
 
 ###
 
 POST {{BaseURL}}/todo
+Authorization: Bearer {{loginRequest.response.body.accessToken}}
 Content-Type: application/json
 
 {
-  "Title": "Mow the lawn"
+  "Title": "Cook dinner"
 }
 
 ###
 
-PUT {{BaseURL}}/todo/2
+PUT {{BaseURL}}/todo/1
+Authorization: Bearer {{loginRequest.response.body.accessToken}}
 Content-Type: application/json
 
 {
@@ -25,4 +33,26 @@ Content-Type: application/json
 ###
 
 DELETE {{BaseURL}}/todo/3
+Authorization: Bearer {{loginRequest.response.body.accessToken}}
 Content-Type: application/json
+
+###
+
+POST {{BaseURL}}/register/
+Content-Type: application/json
+
+{
+  "email": "me2@example.com",
+  "password": "P@ssword1"
+}
+
+###
+
+# @name loginRequest
+POST {{BaseURL}}/login/
+Content-Type: application/json
+
+{
+  "email": "me2@example.com",
+  "password": "P@ssword1"
+}

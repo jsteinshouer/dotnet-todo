@@ -11,4 +11,7 @@ public class ToDo
     public string? Title { get; set; }
 
     public Boolean IsDone { get; set; } = false;
+
+    [Required]
+    public string? UserId { get; set; }
 }
