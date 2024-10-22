@@ -14,15 +14,15 @@ import { ToDoService } from './todo.service';
 
     <div class="col-sm-12 col-md-10 col-lg-8">
 
-      <div class="input-group">
-        <input type="email" class="form-control" id="newTodo" placeholder="To Do" [(ngModel)]="newTodo.title">
+      <div class="input-group input-group-lg">
+        <input type="email" class="form-control" id="newTodo" placeholder="To Do" [(ngModel)]="newTodo.title" (keyup.enter)="addToDo()">
         <input class="btn btn-primary" type="button" (click)="addToDo()" value="Add">
       </div>
-      <ul class="list-group fs-3 mt-5">
+      <ul class="list-group fs-4 mt-5">
         @for ( todo of todos; track todo.id) {
           <li class="list-group-item">
             <input class="form-check-input me-1 me-3" type="checkbox" value="" :id="'todo-' + todo.id" [(ngModel)]="todo.isDone" (ngModelChange)="saveToDo(todo)">
-            <label class="form-check-label fs-3"  [ngClass]="todo.isDone ? 'todo-done' : ''" :for="'todo-' + todo.id">{{todo.title}}</label>
+            <label class="form-check-label fs-4"  [ngClass]="todo.isDone ? 'todo-done' : ''" :for="'todo-' + todo.id">{{todo.title}}</label>
             <span class="float-end trash-can" (click)="deleteToDo(todo)">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 25 25">
                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
