@@ -16,12 +16,6 @@ import { AuthService } from './auth.service';
 		  <input type="text" name="email" class="form-control form-control-lg" placeholder="Email" required="" autofocus="" [(ngModel)]="email">
     </div>
     <div class="mb-3">
-		  <input type="text" name="firstName" class="form-control form-control-lg" placeholder="First Name" required="" autofocus="" [(ngModel)]="firstName">
-    </div>
-    <div class="mb-3">
-		  <input type="text" name="lastName" class="form-control form-control-lg" placeholder="Last Name" required="" autofocus="" [(ngModel)]="lastName">
-    </div>
-    <div class="mb-3">
         <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" required="" [(ngModel)]="password">
     </div>
     <div class="mb-3">
@@ -50,14 +44,12 @@ export class SignupForm {
   private authService = inject(AuthService);
 
   email="";
-  firstName = "";
-  lastName = "";
   password="";
   confirmPassword="";
   error=false;
 
   register() {
-    this.authService.register( this.email, this.firstName, this.lastName, this.password ).then( (result) => {
+    this.authService.register( this.email, this.password ).then( (result) => {
       if (result) {
         this.router.navigateByUrl("/login");
       }
