@@ -401,3 +401,8 @@ FodyWeavers.xsd
 # SQLite database
 **/*.db
 **/*.db-*
+
+# Playwright
+.auth
+playwright-report
+test-results
