@@ -2,10 +2,11 @@
 
 GET {{BaseURL}}/todo
 Authorization: Bearer {{loginRequest.response.body.accessToken}}
+Content-Type: application/json
 Accept: application/json
 
 ###
-GET {{BaseURL}}/todo/1
+GET {{BaseURL}}/todo/2
 Authorization: Bearer {{loginRequest.response.body.accessToken}}
 Accept: application/json
 
@@ -16,23 +17,23 @@ Authorization: Bearer {{loginRequest.response.body.accessToken}}
 Content-Type: application/json
 
 {
-  "Title": "Cook dinner"
+  "Title": "Rake leaves"
 }
 
 ###
 
-PUT {{BaseURL}}/todo/1
+PUT {{BaseURL}}/todo/2
 Authorization: Bearer {{loginRequest.response.body.accessToken}}
 Content-Type: application/json
 
 {
   "title": "Do the dishes",
-  "isDone": false
+  "isDone": true
 }
 
 ###
 
-DELETE {{BaseURL}}/todo/3
+DELETE {{BaseURL}}/todo/2
 Authorization: Bearer {{loginRequest.response.body.accessToken}}
 Content-Type: application/json
 
