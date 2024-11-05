@@ -12,6 +12,5 @@ public class ToDo
 
     public Boolean IsDone { get; set; } = false;
 
-    [Required]
     public string? UserId { get; set; }
 }
