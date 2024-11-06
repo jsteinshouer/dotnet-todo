@@ -18,6 +18,9 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
+var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<ApplicationDBContext>();
+context.Database.EnsureCreated();
+
 app.MapGet("/", () => "Hello World!");
 app.MapGroup("/api").MapIdentityApi<User>();
 app.MapControllers();
